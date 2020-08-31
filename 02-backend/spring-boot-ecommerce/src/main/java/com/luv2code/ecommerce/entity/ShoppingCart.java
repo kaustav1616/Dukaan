@@ -1,7 +1,6 @@
 package com.luv2code.ecommerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -9,22 +8,21 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
-@Table(name="product")
+@Table(name="shopping_cart")
 @Data
-public class Product {
-
+public class ShoppingCart
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false) // fk in table is 'category_id' (refers to id in product_category)
+    @JoinColumn(name = "prod_id", nullable = false)
     @JsonBackReference
-    private ProductCategory category;
+    private Product product;
 
     @Column(name = "sku")
     private String sku;
@@ -55,7 +53,6 @@ public class Product {
     @UpdateTimestamp
     private Date lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    @JsonManagedReference
-    private Set<ShoppingCart> ShoppingCartProductInstances;
+    @Column(name = "category_id")
+    private Long categoryId;
 }
