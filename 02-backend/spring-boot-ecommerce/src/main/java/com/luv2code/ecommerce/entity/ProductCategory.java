@@ -1,5 +1,6 @@
 package com.luv2code.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name="product_category")
-// @Data -- known bug
 @Getter
 @Setter
 public class ProductCategory {
@@ -21,7 +21,8 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category") // referencing variable in referencing table is 'category'
+    @JsonManagedReference
     private Set<Product> products;
 
 }
