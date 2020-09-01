@@ -1,12 +1,9 @@
 package com.luv2code.ecommerce.config;
 
-import com.luv2code.ecommerce.entity.Product;
-import com.luv2code.ecommerce.entity.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
-import org.springframework.http.HttpMethod;
 
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
@@ -24,6 +21,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         entityManager = theEntityManager;
     }
     
+    /*
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 
@@ -44,6 +42,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         // call an internal helper method
         exposeIds(config);
     }
+     */
 
     private void exposeIds(RepositoryRestConfiguration config) {
 

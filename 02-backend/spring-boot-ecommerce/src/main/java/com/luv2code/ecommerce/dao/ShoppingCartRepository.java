@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Repository
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long>
 {
+    ShoppingCart findById(long id);
 }
