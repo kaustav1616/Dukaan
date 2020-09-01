@@ -1,6 +1,6 @@
 # Dukaan
 
-An ecommerce erb app.
+An ecommerce web app.
 
 Backend: JAVA Spring Boot.
 
