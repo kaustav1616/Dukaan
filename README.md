@@ -6,4 +6,4 @@ Backend: JAVA Spring Boot.
 
 Frontend: Angular.
 
-Please note that in frontend, node dependencies have not been included. Please import the node dependencies in your working environment to work on the project.
+Please note that in frontend, node modules have not been included. Please import the relevant node modules in your working environment to work on the project.
