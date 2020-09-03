@@ -5,7 +5,6 @@ import com.luv2code.ecommerce.dao.ShoppingCartRepository;
 import com.luv2code.ecommerce.entity.Product;
 import com.luv2code.ecommerce.entity.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +25,7 @@ public class ShoppingCartController
     private ShoppingCart savedShoppingCart;
 
     @PostMapping(value = "/addToCart/{id}")
-    public ResponseEntity<ShoppingCart> addToCart(@PathVariable(value = "id") Long id)
+    public void addToCart(@PathVariable(value = "id") Long id)
     {
         product = productRepository.findById(id.longValue());
         shoppingCart.setProduct(product);
@@ -38,9 +37,9 @@ public class ShoppingCartController
         shoppingCart.setUnitsInStock(product.getUnitsInStock());
         shoppingCart.setDateCreated(product.getDateCreated());
         shoppingCart.setLastUpdated(product.getLastUpdated());
-        shoppingCart.setCategoryId(product.getCategory().getId());
+        // shoppingCart.setCategoryId(product.getCategory().getId());
         savedShoppingCart = shoppingCartRepository.save(shoppingCart);
-        return ResponseEntity.ok(savedShoppingCart);
+        // return ResponseEntity.ok(savedShoppingCart);
     }
 
     @DeleteMapping(value = "/removeFromCart/{id}")

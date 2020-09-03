@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../common/cart-item';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { Product } from '../common/product';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +11,17 @@ import { Subject } from 'rxjs';
 export class CartService {
 
   cartItems: CartItem[] = [];
+  cartProductList: Product[] = [];
 
   totalPrice: Subject<number> = new Subject<number>();
   totalQuantity: Subject<number> = new Subject<number>();
+  postData = {};
 
-  constructor() { }
+  constructor(private httpClient: HttpClient)
+  {
+  }
 
+  /*
   addToCart(theCartItem: CartItem) {
 
     // check if we already have the item in our cart
@@ -47,6 +54,47 @@ export class CartService {
     // compute cart total price and total quantity
     this.computeCartTotals();
   }
+   */
+
+  addToCart(product: Product)
+  {
+    const cartUrl = `http://localhost:8080/addToCart/${product.id}`;
+    
+    this.httpClient.post(cartUrl, this.postData).toPromise().then(data => {
+      console.log(data);
+    })
+
+    this.getCartDetailsProcessed();
+
+    // create array of CartItem[] objects
+    this.cartItems = [];
+
+    /*
+    for(let cartProduct of this.cartProductList)
+    {
+
+    }
+     */
+  }
+
+  getCartDetailsProcessed()
+  {
+    this.getCartDetails().subscribe(this.processResult());
+  }
+
+  getCartDetails(): Observable<GetResponseProducts>
+  {
+    const cartUrl = `http://localhost:8080/api/shoppingCarts`;
+
+    return this.httpClient.get<GetResponseProducts>(cartUrl);
+  }
+
+  // process the resutlt written by the backend API
+  processResult() {
+    return data => {
+      this.cartProductList = data._embedded.products;
+    };
+  }
 
   computeCartTotals() {
 
@@ -76,5 +124,18 @@ export class CartService {
 
     console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQuantity: ${totalQuantityValue}`);
     console.log('----');
+  }
+}
+
+interface GetResponseProducts {
+  _embedded: {
+    products: Product[];
+  },
+  // response metadata
+  page: {
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number
   }
 }

@@ -53,6 +53,6 @@ public class ShoppingCart
     @UpdateTimestamp
     private Date lastUpdated;
 
-    @Column(name = "category_id")
-    private Long categoryId;
+    // @Column(name = "category_id")
+    // private Long categoryId;
 }
