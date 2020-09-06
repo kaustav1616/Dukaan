@@ -8,10 +8,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class CartService {
-
+export class CartService
+{
   cartItems: CartItem[] = [];
   cartProductList: Product[] = [];
+  thePageNumber: number = 1; // initialized with 1 because when component is loaded for first time, it displays page 1 of category 1
+  thePageSize: number = 5;
+  theTotalElements: number = 0;
 
   totalPrice: Subject<number> = new Subject<number>();
   totalQuantity: Subject<number> = new Subject<number>();
@@ -56,52 +59,77 @@ export class CartService {
   }
    */
 
+  // POST request for add product to cart
   addToCart(product: Product)
   {
     const cartUrl = `http://localhost:8080/addToCart/${product.id}`;
-    
-    this.httpClient.post(cartUrl, this.postData).toPromise().then(data => {
+
+    this.httpClient.post(cartUrl, this.postData).toPromise().then(data =>
+    {
       console.log(data);
     })
 
     this.getCartDetailsProcessed();
+  }
+
+  // process the cart data received from backend
+  getCartDetailsProcessed()
+  {
+    this.getCartDetails().subscribe(this.processResult());
+    // this.getCartDetails().subscribe();
+    // console.log(`List of cart products: ${this.cartProductList.length}`);
+
+    let duplicateCartItem: CartItem = null;
+    let newCartItem: CartItem = null;
 
     // create array of CartItem[] objects
     this.cartItems = [];
 
-    /*
     for(let cartProduct of this.cartProductList)
     {
+      console.log(`name = ${cartProduct.name}`);
+      if(this.cartItems.length > 0)
+        duplicateCartItem = this.cartItems.find(tempCartItem => tempCartItem.id == cartProduct.id);
 
+      if(duplicateCartItem != null)
+        ++duplicateCartItem.quantity;
+      else
+      {
+        newCartItem = new CartItem(cartProduct);
+        this.cartItems.push(newCartItem);
+      }
     }
-     */
+
+    this.computeCartTotals();
   }
 
-  getCartDetailsProcessed()
+  // GET request for fetch cart products
+  getCartDetails(): Observable<GetResponseShoppingCartProducts>
   {
-    this.getCartDetails().subscribe(this.processResult());
+    const cartUrl = `http://localhost:8080/api/shopping-carts`;
+
+    return this.httpClient.get<GetResponseShoppingCartProducts>(cartUrl);
   }
 
-  getCartDetails(): Observable<GetResponseProducts>
+  // process the result written by the backend API
+  processResult()
   {
-    const cartUrl = `http://localhost:8080/api/shoppingCarts`;
-
-    return this.httpClient.get<GetResponseProducts>(cartUrl);
-  }
-
-  // process the resutlt written by the backend API
-  processResult() {
-    return data => {
-      this.cartProductList = data._embedded.products;
+    return data =>
+    {
+      this.cartProductList = data._embedded.shoppingCarts;
+      this.thePageNumber = data.page.number + 1;
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements;
     };
   }
 
-  computeCartTotals() {
-
+  computeCartTotals()
+  {
     let totalPriceValue: number = 0;
     let totalQuantityValue: number = 0;
 
-    for (let currentCartItem of this.cartItems) {
+    for (let currentCartItem of this.cartItems)
+    {
       totalPriceValue += currentCartItem.quantity * currentCartItem.unitPrice;
       totalQuantityValue += currentCartItem.quantity;
     }
@@ -114,10 +142,12 @@ export class CartService {
     this.logCartData(totalPriceValue, totalQuantityValue);
   }
 
-  logCartData(totalPriceValue: number, totalQuantityValue: number) {
+  logCartData(totalPriceValue: number, totalQuantityValue: number)
+  {
 
     console.log('Contents of the cart');
-    for (let tempCartItem of this.cartItems) {
+    for (let tempCartItem of this.cartItems)
+    {
       const subTotalPrice = tempCartItem.quantity * tempCartItem.unitPrice;
       console.log(`name: ${tempCartItem.name}, quantity=${tempCartItem.quantity}, unitPrice=${tempCartItem.unitPrice}, subTotalPrice=${subTotalPrice}`);
     }
@@ -127,9 +157,24 @@ export class CartService {
   }
 }
 
-interface GetResponseProducts {
+interface GetResponseProducts
+{
   _embedded: {
     products: Product[];
+  },
+  // response metadata
+  page: {
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number
+  }
+}
+
+interface GetResponseShoppingCartProducts
+{
+  _embedded: {
+    shoppingCarts: Product[];
   },
   // response metadata
   page: {

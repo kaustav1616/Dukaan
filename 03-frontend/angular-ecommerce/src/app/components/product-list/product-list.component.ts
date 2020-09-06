@@ -94,12 +94,14 @@ export class ProductListComponent implements OnInit {
       this.thePageSize,
       this.currentCategoryId)
       .subscribe(this.processResult());
+
+    console.log(`Products: ${this.products.length}`);
   }
 
   addToCart(theProduct: Product)
   {
     const theCartItem = new CartItem(theProduct);
-    this.cartService.addToCart(theCartItem);
+    this.cartService.addToCart(theProduct);
   }
 
   processResult() {

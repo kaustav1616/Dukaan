@@ -5,12 +5,10 @@ import com.luv2code.ecommerce.dao.ShoppingCartRepository;
 import com.luv2code.ecommerce.entity.Product;
 import com.luv2code.ecommerce.entity.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ShoppingCartController
 {
     @Autowired
@@ -21,15 +19,19 @@ public class ShoppingCartController
 
     private Product product;
     boolean isRemoved;
-    private ShoppingCart shoppingCart = new ShoppingCart();
+    private ShoppingCart shoppingCart;
     private ShoppingCart savedShoppingCart;
 
     @PostMapping(value = "/addToCart/{id}")
     public void addToCart(@PathVariable(value = "id") Long id)
     {
-        product = productRepository.findById(id.longValue());
+        shoppingCart = new ShoppingCart();
+        product = productRepository.findById(id.longValue()); // getting the product to be inserted into cart from 'Product table'
+
+        /* setting the details of the new record to insert */
         shoppingCart.setProduct(product);
         shoppingCart.setSku(product.getSku());
+        shoppingCart.setActive(true);
         shoppingCart.setName(product.getName());
         shoppingCart.setDescription(product.getDescription());
         shoppingCart.setUnitPrice(product.getUnitPrice());
@@ -37,15 +39,14 @@ public class ShoppingCartController
         shoppingCart.setUnitsInStock(product.getUnitsInStock());
         shoppingCart.setDateCreated(product.getDateCreated());
         shoppingCart.setLastUpdated(product.getLastUpdated());
-        // shoppingCart.setCategoryId(product.getCategory().getId());
         savedShoppingCart = shoppingCartRepository.save(shoppingCart);
-        // return ResponseEntity.ok(savedShoppingCart);
     }
 
     @DeleteMapping(value = "/removeFromCart/{id}")
     public void removeFromCart(@PathVariable(value = "id") Long id)
     {
-        savedShoppingCart = shoppingCartRepository.findById(id.longValue());
+        product = productRepository.findById(id.longValue());
+        savedShoppingCart = shoppingCartRepository.findFirstByProduct(product);
         shoppingCartRepository.delete(savedShoppingCart);
     }
 }
