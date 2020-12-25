@@ -1,0 +1,16 @@
+<div class="main-content">
+    <div *ngFor="let tempCartProduct of cartProductList" class="col-md-3">
+        <div class="product-box">
+            <a routerLink="/products/{{ tempCartProduct.id }}">
+                <img src="{{ tempCartProduct.imageUrl }}" class="img-responsive">
+            </a>
+
+            <a routerLink="/products/{{ tempCartProduct.id }}">
+                <h1>{{ tempCartProduct.name }}</h1>
+            </a>
+
+            <div class="price">{{ tempCartProduct.unitPrice | currency:'USD' }}</div>
+            <button (click)="deleteFromCart(tempCartProduct)" class="btn btn-primary btn-sm">Delete from cart</button>
+        </div>
+    </div>
+</div>
