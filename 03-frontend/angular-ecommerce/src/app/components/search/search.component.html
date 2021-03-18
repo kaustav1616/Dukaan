@@ -1,4 +1,4 @@
-<div class="form-header">
+<div *ngIf = "searchBarService.isActive()" class="form-header">
 
     <input #myInput type="text" 
            placeholder="Search for products ..."

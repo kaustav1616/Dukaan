@@ -23,6 +23,7 @@ public class ProductCategory {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category") // referencing variable in referencing table is 'category'
     @JsonManagedReference
+    // @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Product> products;
 }
 

@@ -1,4 +1,4 @@
-<div class="menu-sidebar-content js-scrollbar1">
+<div *ngIf = "productCatgoryMenuService.isActive()" class="menu-sidebar-content js-scrollbar1">
     <nav class="navbar-sidebar">
       <ul class="list-unstyled navbar-list">
         <li *ngFor="let tempProductCategory of productCategories">
