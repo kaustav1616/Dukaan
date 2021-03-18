@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+<<<<<<< HEAD
     "start": "ng serve --proxy-config proxy.conf.json --port 4200 --host 0.0.0.0 --disableHostCheck",
+=======
+    "start": "ng serve",
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,23 +24,38 @@
     "@angular/platform-browser": "~10.0.4",
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
+<<<<<<< HEAD
     "@auth0/angular-jwt": "^5.0.2",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "angular-moment": "^1.3.0",
     "bootstrap": "^4.5.2",
     "moment": "^2.29.1",
+=======
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "bootstrap": "^4.5.0",
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.1102.4",
     "@angular/cli": "^11.2.5",
     "@angular/compiler-cli": "~10.0.4",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+=======
+    "@angular-devkit/build-angular": "~0.1000.3",
+    "@angular/cli": "~10.0.3",
+    "@angular/compiler-cli": "~10.0.4",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",

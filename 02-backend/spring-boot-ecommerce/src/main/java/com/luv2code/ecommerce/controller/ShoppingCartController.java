@@ -2,6 +2,7 @@ package com.luv2code.ecommerce.controller;
 
 import com.luv2code.ecommerce.dao.ProductRepository;
 import com.luv2code.ecommerce.dao.ShoppingCartRepository;
+<<<<<<< HEAD
 import com.luv2code.ecommerce.dao.ShoppingCartRepositoryTest;
 import com.luv2code.ecommerce.dao.UserRepository;
 import com.luv2code.ecommerce.entity.Product;
@@ -18,6 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+=======
+import com.luv2code.ecommerce.entity.Product;
+import com.luv2code.ecommerce.entity.ShoppingCart;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class ShoppingCartController
@@ -28,17 +36,21 @@ public class ShoppingCartController
     @Autowired
     private ProductRepository productRepository;
 
+<<<<<<< HEAD
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private ShoppingCartRepositoryTest shoppingCartRepositoryTest;
 
+=======
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     private Product product;
     boolean isRemoved;
     private ShoppingCart shoppingCart;
     private ShoppingCart savedShoppingCart;
 
+<<<<<<< HEAD
     @GetMapping(value = "/api/getShoppingCart")
     public List<UserShoppingCart> getShoppingCart(@AuthenticationPrincipal UserDetailsAuth userDetailsAuth) // injects current logged in user
     {
@@ -93,13 +105,19 @@ public class ShoppingCartController
     }
 
     /*
+=======
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     @PostMapping(value = "/addToCart/{id}")
     public void addToCart(@PathVariable(value = "id") Long id)
     {
         shoppingCart = new ShoppingCart();
         product = productRepository.findById(id.longValue()); // getting the product to be inserted into cart from 'Product table'
 
+<<<<<<< HEAD
         // setting the details of the new record to insert
+=======
+        /* setting the details of the new record to insert */
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
         shoppingCart.setProduct(product);
         shoppingCart.setSku(product.getSku());
         shoppingCart.setActive(true);
@@ -112,6 +130,7 @@ public class ShoppingCartController
         shoppingCart.setLastUpdated(product.getLastUpdated());
         savedShoppingCart = shoppingCartRepository.save(shoppingCart);
     }
+<<<<<<< HEAD
      */
 
     /*
@@ -138,4 +157,14 @@ public class ShoppingCartController
         ShoppingCartTest shoppingCartProduct = shoppingCartRepositoryTest.findDistinctFirstByProductAndUser(product, user.get());
         shoppingCartRepositoryTest.delete(shoppingCartProduct);
     }
+=======
+
+    @DeleteMapping(value = "/removeFromCart/{id}")
+    public void removeFromCart(@PathVariable(value = "id") Long id)
+    {
+        product = productRepository.findById(id.longValue());
+        savedShoppingCart = shoppingCartRepository.findFirstByProduct(product);
+        shoppingCartRepository.delete(savedShoppingCart);
+    }
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 }

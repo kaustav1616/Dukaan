@@ -1,16 +1,21 @@
 package com.luv2code.ecommerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+=======
+import lombok.Data;
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+<<<<<<< HEAD
 import java.util.List;
 
 @Entity
@@ -19,6 +24,14 @@ import java.util.List;
 @Setter
 public class Product
 {
+=======
+
+@Entity
+@Table(name="product")
+@Data
+public class Product {
+
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -62,5 +75,11 @@ public class Product
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     @JsonManagedReference
     private Set<ShoppingCart> ShoppingCartProductInstances;
+<<<<<<< HEAD
      */
 }
+=======
+
+     */
+}
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d

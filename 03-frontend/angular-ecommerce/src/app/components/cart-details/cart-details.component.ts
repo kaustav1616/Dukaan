@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { CartProduct } from 'src/app/common/cart-product';
 import { CartService } from 'src/app/services/cart.service';
 import { Router, ActivatedRoute, NavigationEnd} from '@angular/router';
@@ -6,12 +7,15 @@ import { LogoutService } from 'src/app/services/logout.service';
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { ProductCategoryMenuService } from 'src/app/services/product-category-menu.service';
 import { CartStatusService } from 'src/app/services/cart-status.service';
+=======
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 
 @Component({
   selector: 'app-cart-details',
   templateUrl: './cart-details.component.html',
   styleUrls: ['./cart-details.component.css']
 })
+<<<<<<< HEAD
 
 export class CartDetailsComponent implements OnInit 
 {
@@ -84,3 +88,13 @@ interface GetResponseShoppingCartProducts
     number: number
   }
 }
+=======
+export class CartDetailsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d

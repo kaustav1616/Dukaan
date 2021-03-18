@@ -4,10 +4,13 @@ import { Product } from 'src/app/common/product';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem } from 'src/app/common/cart-item';
+<<<<<<< HEAD
 import { LogoutService } from 'src/app/services/logout.service';
 import { CartStatusService } from 'src/app/services/cart-status.service';
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { ProductCategoryMenuService } from 'src/app/services/product-category-menu.service';
+=======
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 
 @Component({
   selector: 'app-product-list',
@@ -28,6 +31,7 @@ export class ProductListComponent implements OnInit {
   previousKeyword: string = null;
 
   constructor(private productService: ProductService, private cartService: CartService,
+<<<<<<< HEAD
     private route: ActivatedRoute, private logoutService: LogoutService, 
     private productCategoryMenuService: ProductCategoryMenuService, private seachBarService: SearchBarService, 
     private cartStatusService: CartStatusService) 
@@ -41,6 +45,11 @@ export class ProductListComponent implements OnInit {
     this.seachBarService.activate();
     this.cartStatusService.activate();
     
+=======
+    private route: ActivatedRoute) { }
+
+  ngOnInit() {
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
@@ -114,7 +123,12 @@ export class ProductListComponent implements OnInit {
 
   addToCart(theProduct: Product)
   {
+<<<<<<< HEAD
     this.cartService.addToCart(theProduct.id);
+=======
+    const theCartItem = new CartItem(theProduct);
+    this.cartService.addToCart(theProduct);
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
   }
 
   processResult() {

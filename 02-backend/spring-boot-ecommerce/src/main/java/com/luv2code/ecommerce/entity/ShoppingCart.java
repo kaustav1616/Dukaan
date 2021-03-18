@@ -2,8 +2,11 @@ package com.luv2code.ecommerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+<<<<<<< HEAD
 import lombok.Getter;
 import lombok.Setter;
+=======
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,10 +15,15 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+<<<<<<< HEAD
 @Table(name = "shopping_cart")
 @Data
 @Getter
 @Setter
+=======
+@Table(name="shopping_cart")
+@Data
+>>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
 public class ShoppingCart
 {
     @Id
