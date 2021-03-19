@@ -73,7 +73,7 @@ const routes: Routes = [
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserModule,
     HttpClientModule,
 <<<<<<< HEAD
