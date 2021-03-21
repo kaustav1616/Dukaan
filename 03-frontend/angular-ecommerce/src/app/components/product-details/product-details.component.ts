@@ -5,12 +5,15 @@ import { Product } from 'src/app/common/product';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem } from 'src/app/common/cart-item';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { LogoutService } from 'src/app/services/logout.service';
 import { ProductCategoryMenuService } from 'src/app/services/product-category-menu.service';
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { CartStatusService } from 'src/app/services/cart-status.service';
 =======
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
 
 @Component({
   selector: 'app-product-details',
@@ -21,6 +24,7 @@ export class ProductDetailsComponent implements OnInit
 {
   product: Product = new Product();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   constructor(private productService: ProductService, private theCartService: CartService, private route: ActivatedRoute
     , private logoutService: LogoutService, 
@@ -38,6 +42,11 @@ export class ProductDetailsComponent implements OnInit
 
   ngOnInit(): void {
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+  constructor(private productService: ProductService, private theCartService: CartService, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
     })

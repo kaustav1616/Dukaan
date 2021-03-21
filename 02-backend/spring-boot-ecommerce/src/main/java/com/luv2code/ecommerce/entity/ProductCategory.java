@@ -28,7 +28,10 @@ public class ProductCategory {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category") // referencing variable in referencing table is 'category'
     @JsonManagedReference
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @LazyCollection(LazyCollectionOption.FALSE)
+=======
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     private Set<Product> products;
 =======
     private Set<Product> products;

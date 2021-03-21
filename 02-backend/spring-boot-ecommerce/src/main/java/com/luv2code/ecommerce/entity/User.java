@@ -38,7 +38,6 @@ public class User
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    @JsonManagedReference
     private List<Role> roles;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -49,6 +48,5 @@ public class User
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user") // referencing variable in referencing table is 'user'
     @JsonManagedReference
-    // @LazyCollection(LazyCollectionOption.FALSE)
     private List<Order> orders;
 }

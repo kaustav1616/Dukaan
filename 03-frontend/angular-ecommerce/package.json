@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@angular/animations": "~11.2.6",
     "@angular/common": "~11.2.6",
     "@angular/compiler": "~11.2.6",
@@ -23,14 +24,34 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "bootstrap": "^4.5.0",
+=======
+    "@angular/animations": "~10.0.4",
+    "@angular/common": "~10.0.4",
+    "@angular/compiler": "~10.0.4",
+    "@angular/core": "~10.0.4",
+    "@angular/forms": "~10.0.4",
+    "@angular/localize": "^10.0.5",
+    "@angular/platform-browser": "~10.0.4",
+    "@angular/platform-browser-dynamic": "~10.0.4",
+    "@angular/router": "~10.0.4",
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "bootstrap": "^4.5.2",
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.1102.5",
     "@angular/cli": "~11.2.5",
     "@angular/compiler-cli": "~11.2.6",
+=======
+    "@angular-devkit/build-angular": "~0.1000.3",
+    "@angular/cli": "^10.1.4",
+    "@angular/compiler-cli": "~10.0.4",
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

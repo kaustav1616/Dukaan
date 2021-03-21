@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // @SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class)
+=======
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
 @SpringBootApplication
-public class SpringBootEcommerceApplication
-{
+public class SpringBootEcommerceApplication {
 
 	public static void main(String[] args)
 	{

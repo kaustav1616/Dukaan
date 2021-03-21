@@ -3,12 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { CartProduct } from 'src/app/common/cart-product';
 import { CartService } from 'src/app/services/cart.service';
 import { Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+<<<<<<< HEAD
 import { LogoutService } from 'src/app/services/logout.service';
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { ProductCategoryMenuService } from 'src/app/services/product-category-menu.service';
 import { CartStatusService } from 'src/app/services/cart-status.service';
 =======
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
 
 @Component({
   selector: 'app-cart-details',
@@ -25,18 +28,12 @@ export class CartDetailsComponent implements OnInit
   cartProductList: CartProduct[] = [];
   mySubscription;
 
-  constructor(private cartService: CartService, private logoutService: LogoutService, 
-    private productCategoryMenuService: ProductCategoryMenuService, private seachBarService: SearchBarService, 
-    private cartStatusService: CartStatusService)
+  constructor(private cartService: CartService)
   {
   }
 
   ngOnInit()
   {
-    this.logoutService.activate(); // communicates through LogoutService to LogoutComponent, asking it to disable itself
-    this.productCategoryMenuService.activate();
-    this.seachBarService.activate();
-    this.cartStatusService.activate();
     this.getCartProducts();
   }
 

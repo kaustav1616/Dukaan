@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../common/product';
 import { Observable } from 'rxjs';
@@ -10,6 +11,12 @@ import { Product } from '../common/product';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../common/product';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
 import { ProductCategory } from '../common/product-category';
 
 @Injectable({
@@ -20,6 +27,7 @@ export class ProductService {
   private baseUrl = 'http://localhost:8080/api/products';
   private categoryUrl = 'http://localhost:8080/api/product-category';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   constructor(private httpClient: HttpClient) 
   {
@@ -32,6 +40,11 @@ export class ProductService {
 
   getProductList(theCategoryId: number): Observable<Product[]> {
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+  constructor(private httpClient: HttpClient) { }
+
+  getProductList(theCategoryId: number): Observable<Product[]> {
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     // need to build URL based on category id 
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
@@ -40,9 +53,12 @@ export class ProductService {
 
   getProductListPaginate(thePage: number, thePageSize: number, theCategoryId: number): Observable<GetResponseProducts> {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     // need to build URL based on category id 
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}` + `&page=${thePage}&size=${thePageSize}`;
 
@@ -50,16 +66,21 @@ export class ProductService {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   private getProducts(searchUrl: string): Observable<Product[]> 
   {
 =======
   private getProducts(searchUrl: string): Observable<Product[]> {
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+  private getProducts(searchUrl: string): Observable<Product[]> {
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   getProductCategories(): Observable<ProductCategory[]> 
   {
@@ -67,6 +88,10 @@ export class ProductService {
   getProductCategories(): Observable<ProductCategory[]> {
 
 >>>>>>> f96ce675f9be1d6a30e70a19aebe187be7d66e4d
+=======
+  getProductCategories(): Observable<ProductCategory[]> {
+
+>>>>>>> parent of 6ce8390... Added authentication (JWT) (register + login), interceptor, route guard
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
       map(response => response._embedded.productCategory)
     );
